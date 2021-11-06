@@ -1,0 +1,112 @@
+{% extends 'schooladmin/admintamplate.html'%}
+{%block title%}AddTrainer{%endblock%}
+
+{% load static %}
+
+{%block style%}
+{%endblock%}
+
+{% block link %}
+ <link rel="stylesheet" href="{%static 'school/css/form.css' %}">
+{% endblock %}
+
+{%block body%}
+{%if user.is_authenticated%}
+
+
+  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Add Trainer Details</h1>
+                </div>
+       <div class="form_container">
+    <form action="/addtrainerdetails/" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+      {% csrf_token %}
+      <div class="row">
+        <h4>Account</h4>
+        <div class="row">
+          <div class="col-half">
+            <div class="input-group input-group-icon">
+              <input type="text" name="firstname" id="firstname" placeholder="First Name" required>
+              <div class="input-icon"><i class="fa fa-user"></i></div>
+            </div>
+          </div>
+          <div class="col-half">
+            <div class="input-group input-group-icon">
+              <input type="text" name="lastname" id="lastname" placeholder="Last Name" required>
+              <div class="input-icon"><i class="fa fa-user"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-half">
+            <div class="input-group input-group-icon">
+              <input type="text" name="userid" id="userid" placeholder="User Id" required>
+              <div class="input-icon"><i class="fas fa-address-card"></i></div>
+            </div>
+          </div>
+          <div class="col-half">
+            <div class="input-group input-group-icon">
+              <input type="file" name="photo" id="photo" placeholder="Uploade Image" aria-label="Recipient's username"
+                aria-describedby="basic-addon2" required>
+              <div class="input-icon" id="basic-addon2"><i class="fas fa-image"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-group input-group-icon">
+          <input type="text" name="email" id="email" placeholder="Email Adress" required>
+          <div class="input-icon"><i class="fa fa-envelope"></i></div>
+        </div>
+        <div class="input-group input-group-icon">
+          <input type="password" name="password" id="password" placeholder="Password" required>
+          <div class="input-icon"><i class="fa fa-key"></i></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-half">
+          <h4>Date Of Joining</h4>
+          <div class="input-group">
+            <input type="date" name="date" id="date" required>
+          </div>
+        </div>
+        <div class="col-half">
+          <h4>Gender</h4>
+          <div class="input-group">
+            <input type="radio" id="gender-male" name="gender" value="male">
+            <label for="gender-male">Male</label>
+            <input type="radio" id="gender-female" name="gender" value="female">
+            <label for="gender-female"> Female</label>
+          </div>
+        </div>
+      </div>
+      <div class="input-group input-group-icon">
+        <input type="text" name="address" id="address" placeholder="Address" required>
+        <div class="input-icon"><i class="fas fa-map-marker-alt"></i></div>
+      </div>
+
+      <div class="input-group input-group-icon">
+        <input type="text" name="city" id="city" placeholder="City" required>
+        <div class="input-icon"><i class="fas fa-map-pin"></i></div>
+      </div>
+
+      <div class="input-group input-group-icon">
+        <input type="number" name="phone" id="phone" placeholder="Phone" required>
+        <div class="input-icon"><i class="fas fa-phone"></i></div>
+      </div>
+
+      <div class="input-group input-group-icon">
+        <input type="text" name="experience" placeholder="Experience" required>
+        <div class="input-icon"><i class="fas fa-rupee-sign"></i></div>
+      </div>
+
+      <div style="margin-left: 43%;">
+        <button type="submit" class="btn btn-warning">Submit</button>
+      </div>
+
+    </form>
+  </div>
+  </main>
+{%endif%}
+{%endblock%}

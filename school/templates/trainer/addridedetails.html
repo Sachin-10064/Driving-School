@@ -1,0 +1,53 @@
+{% extends 'trainer/trainertemplate.html'%}
+{%block title%}AddRideDetails{%endblock%}
+
+{%block style%}
+.form{
+border-radius: 4.2px;
+  box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
+}
+{%endblock%}
+
+
+{%block body%}
+{%if user.is_authenticated%}
+{% load static %}
+
+  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">Add Ride Details</h1>
+      </div>
+       <div class="form p-4">
+          <form method="post" action="/addridedetails/" class="needs-validation" >
+{% csrf_token %}
+              <select class="btn btn-outline-dark mb-3" aria-label="Default select example" name="id">
+                 <option selected>Open this select Trainee</option>
+                  {% for t in trainee %}
+                 <option value="{{t.trainee_id_id}}">{{t.trainee_id_id}}</option>
+                   {% endfor %}
+              </select>
+              <div class="mb-3 row">
+                  <label for="fromto" class="col-sm-2 col-form-label">From To</label>
+                  <div class="col-sm-10">
+                     <input type="text" class="form-control" name="fromto" id="fromto">
+                  </div>
+              </div>
+              <div class="mb-3 row">
+                  <label for="duration" class="col-sm-2 col-form-label">Duration</label>
+                  <div class="col-sm-10">
+                       <input type="text" class="form-control" id="duration" name="duration">
+                  </div>
+              </div>
+              <div class="mb-3 row">
+                  <label for="performance" class="col-sm-2 col-form-label">Performance</label>
+                  <div class="col-sm-10">
+                      <textarea  class="form-control" id="performance" name="performance"></textarea>
+                  </div>
+              </div>
+
+              <button class="btn btn-warning" type="submit">Submit</button>
+          </form>
+      </div>
+  </main>
+{%endif%}
+{%endblock%}

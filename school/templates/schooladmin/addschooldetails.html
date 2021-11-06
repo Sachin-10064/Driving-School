@@ -1,0 +1,71 @@
+{% extends 'schooladmin/admintamplate.html'%}
+{%block title%}CompanyDetails{%endblock%}
+
+
+{% load static %}
+{% block link %}
+ <link rel="stylesheet" href="{%static 'school/css/form.css' %}">
+{% endblock %}
+
+{%block style%}
+{%endblock%}
+
+
+{%block body%}
+{%if user.is_authenticated%}
+
+  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">Company Details</h1>
+      </div>
+      <div class="container">
+          <form method="post" class="needs-validation" novalidate>
+             {% csrf_token %}
+              <div class="row">
+                  <h4>School Details</h4>
+                   <div class="input-group input-group-icon">
+                      <input type="text" name="address" id="address" placeholder="Address" value="{{Details.address}}" required>
+                      <div class="input-icon"><i class="fas fa-map-marker-alt"></i></div>
+                   </div>
+
+                  <div class="input-group input-group-icon">
+                     <input type="text" name="city" id="city" placeholder="City" value="{{Details.city}}" required>
+                     <div class="input-icon"><i class="fas fa-map-pin"></i></div>
+                  </div>
+
+                  <div class="input-group input-group-icon">
+                     <input type="number" name="phone" id="phone" placeholder="Phone" value="{{Details.phone}}" required>
+                     <div class="input-icon"><i class="fas fa-phone"></i></div>
+                  </div>
+
+                  <div class="input-group input-group-icon">
+                      <input type="email" name="email" id="email" placeholder="Email" value="{{Details.email}}" required>
+                      <div class="input-icon"><i class="fas fa-phone"></i></div>
+                  </div>
+
+                 <div class="row">
+                     <div class="col-half">
+                         <h4>Opening Days</h4>
+                         <div class="input-group input-group-icon">
+                             <input type="text" name="opening" id="opening" placeholder="Opening Days" value="{{Details.opening_days}}" required>
+                             <div class="input-icon"><i class="fas fa-money-check-alt"></i></div>
+                         </div>
+                     </div>
+
+                    <div class="col-half">
+                        <h4>Timing</h4>
+                        <div class="input-group input-group-icon">
+                            <input type="text" name="time" id="time" placeholder="Opening and Closing Time" value="{{Details.time}}" required>
+                            <div class="input-icon"><i class="fas fa-money-check-alt"></i></div>
+                        </div>
+                    </div>
+                 </div>
+                  <div class="text-center"><button type="submit" class="btn btn-warning">Submit</button></div>
+              </div>
+          </form>
+      </div>
+
+
+  </main>
+{%endif%}
+{%endblock%}

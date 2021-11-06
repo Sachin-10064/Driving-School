@@ -1,0 +1,35 @@
+{% extends 'trainee/traineetemplate.html'%}
+{%block title%}PostFeedback{%endblock%}
+
+{% load static %}
+
+{%block body%}
+{%if user.is_authenticated%}
+
+  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">Post Feedback</h1>
+      </div>
+      <div class="container">
+          <form action="/postfeedback/" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+              {% csrf_token %}
+              <select class="form-select" name="rating" aria-label="Default select example" required>
+                  <option selected>Open this select menu</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                  <option value="4">Four</option>
+                  <option value="5">Five</option>
+              </select>
+
+              <div class="form-floating mt-2">
+                  <textarea class="form-control" name="feedback" placeholder="Leave a Feedback here" id="floatingTextarea2" style="height: 100px"></textarea>
+                  <label for="floatingTextarea2">Feedback</label>
+              </div>
+
+              <button type="submit" class="btn btn-warning mt-3">Submit</button>
+          </form>
+      </div>
+  </main>
+{%endif%}
+{%endblock%}
